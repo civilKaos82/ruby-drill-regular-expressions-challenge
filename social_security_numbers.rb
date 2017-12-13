@@ -13,6 +13,13 @@ end
 
 # Find and return a Social Security Number.
 def grab_ssn(string)
+  if has_ssn?(string)
+    ssn_index = (string =~ /\d{3}\W\d{2}\W\d{4}/)
+    ssn = string[ssn_index..(ssn_index + 10)]
+    return ssn
+  elsif !has_ssn?(string)
+    return ''
+  end
 end
 
 # Find and return all Social Security Numbers.
